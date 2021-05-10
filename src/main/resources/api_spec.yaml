@@ -1,0 +1,87 @@
+swagger: "2.0"
+info:
+  version: "1.0.0"
+  title: "Microservices training coding challenge"
+  termsOfService: "http://swagger.io/terms/"
+  contact:
+    email: "apiteam@swagger.io"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "petstore.swagger.io"
+basePath: "/v2"
+tags:
+  - name: "default"
+    externalDocs:
+      description: "Find out more"
+      url: "http://swagger.io"
+schemes:
+  - "https"
+  - "http"
+paths:
+  /transactions:
+    get:
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - in: query
+          name: accountId
+          type: "string"
+          required: true
+        - in: query
+          name: month
+          type: "integer"
+          description: month in which transaction were made
+          required: true
+        - in: query
+          name: offset
+          type: "integer"
+          description: offset from which the listed transactions begin
+          default: 0
+        - in: query
+          name: limit
+          type: "integer"
+          description: number transactions shown on page
+          default: 100
+      responses:
+        "200":
+          description: "OK"
+          schema:
+            $ref: "#/definitions/TransactionPage"
+        "401":
+          description: "Unauthorised"
+        "400":
+          description: "Bad request"
+        "500":
+          description: "Server error"
+definitions:
+  Transaction:
+    properties:
+      id:
+        type: "string"
+      amount:
+        type: "string"
+      iban:
+        type: "string"
+      valueDate:
+        type: "string"
+      desription:
+        type: "string"
+  TransactionPage:
+    properties:
+      debit:
+        type: "number"
+      credit:
+        type: "number"
+      exchangeRate:
+        type: "number"
+      transactions:
+        type: array
+        items:
+          $ref: '#/definitions/Transaction'
+      transactionCount:
+        type: "number"
+      offset:
+        type: number
