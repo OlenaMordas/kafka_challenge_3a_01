@@ -28,7 +28,7 @@ paths:
       parameters:
         - in: query
           name: accountId
-          type: "string"
+          type: "integer"
           required: true
         - in: query
           name: month
