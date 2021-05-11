@@ -188,8 +188,8 @@
 								${project.basedir}/src/main/resources/api_spec.yaml
 							</inputSpec>
 							<generatorName>spring</generatorName>
-							<apiPackage>io.reflectoring.api</apiPackage>
-							<modelPackage>io.reflectoring.model</modelPackage>
+							<apiPackage>com.example.kafka_challenge_3a.api</apiPackage>
+							<modelPackage>com.example.kafka_challenge_3a.model</modelPackage>
 							<supportingFilesToGenerate>
 								ApiUtil.java
 							</supportingFilesToGenerate>
